@@ -4,6 +4,8 @@ import Button from "@/app/components/Button"
 import Input from "@/app/components/inputs/Input"
 import React, { useCallback, useState } from "react"
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form"
+import AuthSocialButton from "./AuthSocialButton"
+import { BsGithub, BsGoogle } from "react-icons/bs"
 
 type Props = {}
 
@@ -15,9 +17,9 @@ const AuthForm = (props: Props) => {
 
   const toggleVariant = useCallback(() => {
     if (variant === "LOGIN") {
-      setVariant("LOGIN")
-    } else {
       setVariant("REGISTER")
+    } else {
+      setVariant("LOGIN")
     }
   }, [variant])
 
@@ -80,6 +82,7 @@ const AuthForm = (props: Props) => {
               label="Name"
               register={register}
               errors={errors}
+              disabled={isLoading}
             />
           ) : null}
           <Input
@@ -87,6 +90,7 @@ const AuthForm = (props: Props) => {
             label="Email"
             register={register}
             errors={errors}
+            disabled={isLoading}
           />
           <Input
             id="password"
@@ -94,6 +98,7 @@ const AuthForm = (props: Props) => {
             type="password"
             register={register}
             errors={errors}
+            disabled={isLoading}
           />
           <div>
             <Button
@@ -129,11 +134,40 @@ const AuthForm = (props: Props) => {
                   </span>
                 </div>
               </div>
-
-              <div className="mt-6 flex gap-2">
-                
-              </div>
             </div>
+          </div>
+
+          <div className="mt-6 flex gap-2">
+            <AuthSocialButton
+              icon={BsGithub}
+              onClick={() => socialAction('github')}
+            />
+            <AuthSocialButton
+              icon={BsGoogle}
+              onClick={() => socialAction('google')}
+            />
+          </div>
+        </div>
+
+        <div 
+          className="
+            flex
+            gap-2
+            justify-center
+            text-sm
+            mt-6
+            px-2
+            text-gray-500
+          "
+        >
+          <div>
+            {variant === 'LOGIN' ? 'New to Messenger?' : 'Already have an account?'}
+          </div>
+          <div
+            onClick={toggleVariant}
+            className="underline cursor-pointer"
+          >
+            {variant === 'LOGIN' ? 'Create an account' : 'Login'}
           </div>
         </div>
       </div>
