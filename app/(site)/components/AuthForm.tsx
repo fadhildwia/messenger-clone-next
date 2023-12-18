@@ -25,7 +25,7 @@ const AuthForm = (props: Props) => {
     if (session?.status === 'authenticated') {
       console.log('Authenticated')
     }
-  }, [session?.status])
+  }, [session?.status, router])
 
   const toggleVariant = useCallback(() => {
     if (variant === "LOGIN") {
@@ -52,6 +52,19 @@ const AuthForm = (props: Props) => {
 
     if (variant === 'REGISTER') {
       axios.post('/api/register', data)
+      .then(() => signIn('credentials', {
+        ...data,
+        redirect: false,
+      }))
+      .then((callback) => {
+        if (callback?.error) {
+          toast.error('Invalid credentials!');
+        }
+
+        if (callback?.ok) {
+          router.push('/conversations')
+        }
+      })
       .catch(() => toast.error('Something went wrong!'))
       .finally(() => setIsLoading(false))
     }
@@ -68,6 +81,7 @@ const AuthForm = (props: Props) => {
 
         if (callback?.ok && !callback?.error) {
           toast.success('Logged in!')
+          router.push('/users')
         }
       })
       .finally(() => setIsLoading(false))
