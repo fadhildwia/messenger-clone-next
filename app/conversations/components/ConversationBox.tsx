@@ -3,7 +3,7 @@ import { useCallback, useMemo } from "react"
 import { useRouter } from "next/navigation"
 import { useSession } from "next-auth/react"
 import clsx from "clsx"
-import useOtherUser from '@/hooks/useOtherUser'
+import useOtherUser from '@/app/hooks/useOtherUser'
 import Avatar from '@/app/components/Avatar'
 import { format } from 'date-fns'
 

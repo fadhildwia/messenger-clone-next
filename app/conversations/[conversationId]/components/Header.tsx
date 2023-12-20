@@ -5,7 +5,7 @@ import { HiEllipsisHorizontal } from 'react-icons/hi2'
 import { useMemo, useState } from "react"
 import Link from "next/link"
 import { Conversation, User } from "@prisma/client"
-import useOtherUser from '@/hooks/useOtherUser'
+import useOtherUser from '@/app/hooks/useOtherUser'
 import Avatar from '@/app/components/Avatar'
 import ProfileDrawer from './ProfileDrawer'
 

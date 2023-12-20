@@ -8,8 +8,8 @@ import { Dialog, Transition } from '@headlessui/react'
 
 
 import Avatar from '@/app/components/Avatar'
-import useOtherUser from '@/hooks/useOtherUser'
-import useActiveList from '@/hooks/useActiveList'
+import useOtherUser from '@/app/hooks/useOtherUser'
+import useActiveList from '@/app/hooks/useActiveList'
 import ConfirmModal from './ConfirmModal'
 
 interface ProfileDrawerProps {

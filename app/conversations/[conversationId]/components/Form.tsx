@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import useConversation from '@/hooks/useConversation'
+import useConversation from '@/app/hooks/useConversation'
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
 import axios from 'axios'
 import { HiPhoto } from 'react-icons/hi2'
