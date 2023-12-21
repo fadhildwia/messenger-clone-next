@@ -23,7 +23,7 @@ const AuthForm = (props: Props) => {
 
   useEffect(() => {
     if (session?.status === 'authenticated') {
-      console.log('Authenticated')
+      router.push('/conversations')
     }
   }, [session?.status, router])
 
@@ -80,8 +80,7 @@ const AuthForm = (props: Props) => {
         }
 
         if (callback?.ok && !callback?.error) {
-          toast.success('Logged in!')
-          router.push('/users')
+          router.push('/conversations')
         }
       })
       .finally(() => setIsLoading(false))
@@ -97,8 +96,9 @@ const AuthForm = (props: Props) => {
         toast.error('Invalid credentials')
       }
 
-      if (callback?.ok && !callback?.error) {
+      if (callback?.ok) {
         toast.success('Logged in!')
+        router.push('/conversations')
       }
     })
     .finally(() => setIsLoading(false))
