@@ -11,6 +11,7 @@ import GroupChatModal from '@/app/components/modals/GroupChatModal'
 import { User } from '@prisma/client'
 import { pusherClient } from "@/app/libs/pusher"
 import { useSession } from 'next-auth/react'
+import { find } from 'lodash'
 
 interface ConversationListProps {
   initialItems: FullConversationType[]
