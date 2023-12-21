@@ -38,16 +38,13 @@ const Select: React.FC<SelectProps> = ({
         isMulti
         options={options}
         menuPortalTarget={document.body}
-        styles={{
-          menuPortal: (base) => ({ ...base, zIndex: 9999 })
-        }}
         classNames={{
           control: () => 'text-sm',
         }}
       />
       </div>
     </div>
-   )
+  )
 }
- 
+
 export default Select
